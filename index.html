@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Photo Style Editor</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to a CSS file we'll create later -->
+</head>
+<body>
+    <h1>AI Photo Style Editor</h1>
+    <div id="input-section">
+        <div>
+            <label>Target RAW Image:</label>
+            <button id="select-target-button">Select File...</button>
+            <span id="target-file-display">(No file selected)</span>
+        </div>
+        <br>
+        <div>
+            <label for="subject-type-select">Subject Type:</label>
+            <select id="subject-type-select" name="subject-type">
+                <option value="Portrait">Portrait</option>
+                <option value="Landscape">Landscape</option>
+                <option value="Street">Street</option>
+                <option value="Architecture">Architecture</option>
+                <option value="Wildlife">Wildlife</option>
+                <option value="Product">Product</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+    </div>
+    <hr> <!-- Separator -->
+    <div id="style-section">
+        <h3>Choose Style Approach:</h3>
+        <div>
+            <input type="radio" id="style-approach-predefined" name="style-approach" value="predefined" checked>
+            <label for="style-approach-predefined">Predefined Style</label>
+        </div>
+        <div>
+            <input type="radio" id="style-approach-reference" name="style-approach" value="reference">
+            <label for="style-approach-reference">Mimic Reference Image</label>
+        </div>
+        <br>
+
+        <!-- Container for Predefined Style Dropdown -->
+        <div id="predefined-style-input">
+            <label for="style-select">Select Style:</label>
+            <select id="style-select" name="style-select">
+                <option value="Nostalgic Anime">Nostalgic Anime</option>
+                <option value="Cinematic Moody">Cinematic Moody</option>
+                <option value="Golden Hour Warmth">Golden Hour Warmth</option>
+                <option value="Vibrant Landscape">Vibrant Landscape</option>
+                <option value="Classic Black & White">Classic Black & White</option>
+                <option value="Urban Night / Cyberpunk">Urban Night / Cyberpunk</option>
+                <option value="Vintage Film Look">Vintage Film Look</option>
+                <option value="Bright & Airy">Bright & Airy</option>
+                <option value="Ansel Adams Inspired">Ansel Adams Inspired</option>
+                <option value="Wes Anderson Inspired">Wes Anderson Inspired</option>
+                <option value="Annie Leibovitz Inspired">Annie Leibovitz Inspired</option>
+                <option value="Steve McCurry Inspired">Steve McCurry Inspired</option>
+            </select>
+        </div>
+
+        <!-- Container for Reference Image Input (Initially Hidden) -->
+        <div id="reference-image-input" style="display: none;">
+             <label>Reference Image:</label>
+             <button id="select-reference-button">Select File...</button>
+             <span id="reference-file-display">(No file selected)</span>
+        </div>
+        <br>
+        <button id="analyze-button">Analyze Image</button>
+    </div>
+    <hr> <!-- Separator -->
+    <div id="output-section">
+        <h2>Suggested Settings:</h2>
+        <pre id="settings-output">...</pre> <!-- Output area -->
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script> <!-- Link to a renderer JS file we'll create later -->
+</body>
+</html>
